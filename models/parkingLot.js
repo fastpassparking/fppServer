@@ -1,6 +1,9 @@
 // Dependencies
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var weeklyParkingCosts = require('./weeklyParkingCosts');
+var dailyParkingCosts = require('./dailyParkingCosts');
+var parkingPass = require('./parkingPass');
 
 // ParkingLot model definition
 var parkingLotSchema = new Schema({
@@ -13,7 +16,12 @@ var parkingLotSchema = new Schema({
 		zipcode: String,
 		latitude: Number,
 		longitude: Number
-	}
+	},
+	weeklyParkingCosts: [weeklyParkingCosts],
+	parkingCostsOverrides: [dailyParkingCosts],
+	currentParkingPasses: [parkingPass],
+	parkingPassHistory: [Schema.ObjectId],
+	parkingPassValidationHistory: [Schema.ObjectId]
 })
 
 // Set the model
