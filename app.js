@@ -1,6 +1,9 @@
 // Dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
+var path = require('path');
+var fs = require('fs');
+var mongoose = require('mongoose');
 
 // Routs
 var index = require('./routes/index');
@@ -9,13 +12,12 @@ var users = require('./routes/users');
 // Start the app
 var app = express();
 
+
 // Environments
 app.use('/', index);
 app.use('/users', users);
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // For development database
