@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'FastPassParking' });
+	res.end('Server is running');
 });
 
 // Return value of index

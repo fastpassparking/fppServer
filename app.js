@@ -1,27 +1,16 @@
 // Dependencies
 var express = require('express');
-var mongoose = require('mongoose');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var fs = require('fs');
-var path = require('path');
-var http = require('http');
-var path = require('path');
 
 // Routs
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var users = require('./routes/users');
 
 // Start the app
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 // Environments
-app.use('/', routes);
+app.use('/', index);
 app.use('/users', users);
 app.use(logger('dev'));
 app.use(bodyParser.json());
