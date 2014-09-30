@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -12,11 +14,11 @@ var app = express();
 // Environments
 app.use('/', index);
 app.use('/users', users);
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(cookieParser());
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // For development database
 if ('development' == app.get('env')) {
@@ -25,9 +27,9 @@ if ('development' == app.get('env')) {
 }
 
 // Load the database models from 
-fs.readdirSync(__dirname + '/models').forEach(function(filename) {
-	if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
-});
+// fs.readdirSync(__dirname + '/models').forEach(function(filename) {
+// 	if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -60,5 +62,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.listen(3000);
 
 module.exports = app;
