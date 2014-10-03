@@ -1,19 +1,26 @@
+#### Usage Instructions ####
+
+# Start mongodb server (if running locally)
+# In seperate command line window
+mongod
+
 # Install dependencies
 cd fppServer
 npm install
 
-# Run the app on local server:
-** WINDOWS
-set DEBUG=fppServer
-node ./bin/www
-
-** UNIX
-DEBUG=fppServer ./bin/www
+# Run the app on local server (development mode):
+node app.js
 Navigate browser to localhost:3000 (default)
 
-#### Project structure
+# To run in production mode
+set NODE_ENV=production
+# To switch back to development mode
+set NODE_ENV=development
+
+#### Project structure ####
 app.js - Main application entrance
+config.json - Configuration for development / production environments
+package.json - Project dependencies
 routes - url addresses
 models - database model definitions
-views - visual pages, not necessary for our needs
 mongoose - MongoDb ORM framework

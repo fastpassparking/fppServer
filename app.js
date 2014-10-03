@@ -1,71 +1,42 @@
-#!/usr/bin/env node
-
 // Dependencies
 var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
-var fs = require('fs');
 var mongoose = require('mongoose');
 
-// Routs
+// Import routes
 var index = require('./routes/index');
-var users = require('./routes/users');
+var userRoute = require('./routes/user');
 
 // Start the app
 var app = express();
 
+// Get the configuration options
+// based on the config file parameters
+var config = require('./config')[app.get('env')];
+var serverPort = config.serverPort;
+var dbPort = config.dbPort;
 
-// Environments
+// Use routes
 app.use('/', index);
-app.use('/users', users);
-// app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use('/user', userRoute);
 
-// For development database
-if ('development' == app.get('env')) {
-	//mongoDb host location
-	//mongoose.connect('mongodb://55.55.55.5/fppDb');
-}
-
-// Load the database models from 
-// fs.readdirSync(__dirname + '/models').forEach(function(filename) {
-// 	if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
-// });
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+// Connect to database
+mongoose.connect(dbPort, function(err, data) {
+    if(err) {
+        console.log('could not connect to db: ' + dbPort);
+        console.log(err);
+    } else {
+        console.log('Connected to db: ' + dbPort);
+    }
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+// List on the server port
+app.listen(serverPort, function(err, data) {
+    if(err) {
+        console.log('could not connect to server: ' + serverPort);
+        console.log(err);
+    } else {
+        console.log('Server connected to port: ' + serverPort);
+    }
 });
-
-app.listen(3000);
 
 module.exports = app;

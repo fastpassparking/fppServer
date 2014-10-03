@@ -8,10 +8,16 @@ var parkingViolation = require('./parkingViolation');
 // User model definition
 var userSchema = new Schema({
 	id: Schema.ObjectId,
-	loginInformation: {
-		userName: String,
-		password: String,
-		email: String,
+	accountInformation: {
+		email: {
+			type: String,
+			unique: true,
+			required: true
+		},
+		password: {
+			type: String,
+			required: true
+		},
 		phoneNumner: String
 	},
 	cars: [car],

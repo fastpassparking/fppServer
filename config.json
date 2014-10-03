@@ -1,0 +1,12 @@
+{
+  "development": {
+    "serverPort": 3000,
+    "dbPort": "localHost::272014/fppDb",
+    "errorHandlerOptions": {"dumpExceptions": true, "showStack": true}
+  },
+  "production": {
+    "serverPort": 3003,
+    "dbPort": "localHost::272014/fppDb",
+    "errorHandlerOptions": {"dumpExceptions": false, "showStack": false}
+  }
+}
