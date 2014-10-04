@@ -14,14 +14,14 @@ var app = express();
 var config = require('./config')[app.get('env')];
 var serverPort = config.serverPort;
 var dbPort = config.dbPort;
+var dbOptions = config.dbOptions;
 
 // Use routes
 app.use('/', index);
 app.use('/user', userRoute);
 
 // Connect to database
-mongoose.connect(dbPort, {server: {poolSize: config.poolSize}}, 
-    function(err, data) {
+mongoose.connect(dbPort, dbOptions, function(err, data) {
     if(err) {
         console.log('could not connect to db: ' + dbPort);
         console.log(err);
