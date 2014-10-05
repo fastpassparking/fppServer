@@ -6,8 +6,13 @@ var dailyParkingCosts = require('./dailyParkingCosts');
 // WeeklyParkingCosts model definition
 var weeklyParkingCostsSchema = new Schema({
 	id: Schema.ObjectId,
+	parkingLotId: {
+		type: String,
+		required: true
+	},
 	parkingType: String,
-	dailyParkingCosts: [dailyParkingCosts]
+	dailyParkingCosts: [dailyParkingCosts],
+	parkingCostsOverrides: [dailyParkingCosts]
 })
 
 // Set the model

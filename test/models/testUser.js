@@ -1,8 +1,6 @@
 {
   "user": { 
-	"accountInformation": {
-		"email": "user@mail.com",
-		"password": "secret"
-	}
+	"email": "user@mail.com",
+	"password": "secret"
   }
 }

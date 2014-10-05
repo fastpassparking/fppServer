@@ -5,7 +5,14 @@ var Schema = mongoose.Schema;
 // Car model definition
 var carSchema = new Schema({
 	id: Schema.ObjectId,
-	license: String,
+	userId: {
+		type: String,
+		required: true
+	},
+	license: {
+		plateNumber: String,
+		state: String
+	},
 	make: String,
 	model: String,
 	color: String
