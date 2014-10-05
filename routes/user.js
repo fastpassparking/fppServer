@@ -19,6 +19,21 @@ router.get('/', function(req, res) {
   })
 });
 
+//get specific user
+router.get('/:id', function(req, res) {
+  mongoose.model('user').findOne({'_id': req.param('id') }, function(err, user) {
+  	if(err) {
+  		console.log('error getting user');
+  		console.log(err);
+  		res.send(err);
+  	} else {
+  		console.log(user);
+  		res.send(user);
+  		
+  	}
+  })
+});
+
 // Create user
 router.post('/', function(req, res) {
 	var userToAdd = req.body.user;
@@ -34,5 +49,7 @@ router.post('/', function(req, res) {
 		}
 	})
 })
+
+
 
 module.exports = router;
