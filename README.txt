@@ -16,6 +16,8 @@ Navigate browser to localhost:3000 (default)
 set NODE_ENV=production
 # To switch back to development mode
 set NODE_ENV=development
+# To run in server mode (linux)
+exec sudo -u {username} NODE_ENV=dev_server nodejs app.js
 
 #### Project structure ####
 app.js - Main application entrance

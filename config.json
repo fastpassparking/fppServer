@@ -12,6 +12,19 @@
     },
     "errorHandlerOptions": {"dumpExceptions": true, "showStack": true}
   },
+  "dev_server": {
+    "serverPort": 80,
+    "dbPort": "localHost::272014/fppDb",
+    "dbOptions": {
+      "server": {
+        "poolSize": 5,
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    },
+    "errorHandlerOptions": {"dumpExceptions": true, "showStack": true}
+  },
   "production": {
     "serverPort": 3003,
     "dbPort": "localHost::272014/fppDb",

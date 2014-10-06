@@ -9,16 +9,17 @@ var userRoute = require('./routes/user');
 // Start the app
 var app = express();
 
-// Get the configuration options
-// based on the config file parameters
-var config = require('./config')[app.get('env')];
-var serverPort = config.serverPort;
-var dbPort = config.dbPort;
-var dbOptions = config.dbOptions;
-
 // Use routes
 app.use('/', index);
 app.use('/user', userRoute);
+
+// Get the configuration options
+// based on the config file parameters
+var environment = app.get('env');
+var config = require('./config')[environment];
+var serverPort = config.serverPort;
+var dbPort = config.dbPort;
+var dbOptions = config.dbOptions;
 
 // Connect to database
 mongoose.connect(dbPort, dbOptions, function(err, data) {
