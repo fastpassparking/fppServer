@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var userModel = require('../models/user');
+require('../models/user');
 
 router.use(bodyParser.json());
 
@@ -87,8 +87,6 @@ router.post('/', function(req, res) {
 			res.send(user);
 		}
 	})
-})
-
-
+});
 
 module.exports = router;

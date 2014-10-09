@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 // Import routes
 var index = require('./routes/index');
 var userRoute = require('./routes/user');
+var carRoute = require('./routes/car');
 
 // Start the app
 var app = express();
@@ -12,6 +13,7 @@ var app = express();
 // Use routes
 app.use('/', index);
 app.use('/user', userRoute);
+app.use('/car', carRoute);
 
 // Get the configuration options
 // based on the config file parameters
