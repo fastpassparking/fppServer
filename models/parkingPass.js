@@ -6,7 +6,7 @@ var parkingPayment = require('./parkingPayment');
 // ParkingPass model definition
 var parkingPassSchema = new Schema({
 	id: Schema.ObjectId,
-	carId: {
+	vehicleId: {
 		type: String,
 		required: true
 	},

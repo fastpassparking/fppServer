@@ -2,8 +2,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// Car model definition
-var carSchema = new Schema({
+// vehicle model definition
+var vehicleSchema = new Schema({
 	id: Schema.ObjectId,
 	userId: {
 		type: String,
@@ -19,4 +19,4 @@ var carSchema = new Schema({
 })
 
 // Set the model
-mongoose.model('car', carSchema);
+mongoose.model('vehicle', vehicleSchema);

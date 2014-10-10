@@ -1,5 +1,5 @@
 {
-  "car": { 
+  "vehicle": { 
   	"license": {
   		"plateNumber": "abc123",
   		"state": "FL"

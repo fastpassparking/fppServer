@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 // ParkingViolation model definition
 var parkingViolationSchema = new Schema({
 	id: Schema.ObjectId,
-	carId: {
+	vehicleId: {
 		type: String,
 		required: true
 	},
