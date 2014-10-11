@@ -10,13 +10,19 @@ var parkingLotSchema = new Schema({
 		required: true
 	},
 	name: String,
-	location: {
+	geoLocation: {
+		longitude: Number,
+		latitude: Number
+	},
+	coordinates : [{
+		longitude: Number,
+		latitude: Number
+	}],
+	address: {
 		street: String,
 		state: String,
 		city: String,
-		zipcode: String,
-		latitude: Number,
-		longitude: Number
+		zipcode: String
 	}
 })
 

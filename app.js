@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var userRoute = require('./routes/user');
 var vehicleRoute = require('./routes/vehicle');
+var parkingLotRoute = require('./routes/parkingLot');
 
 // Start the app
 var app = express();
@@ -14,6 +15,7 @@ var app = express();
 app.use('/', index);
 app.use('/user', userRoute);
 app.use('/vehicle', vehicleRoute);
+app.use('/parkingLot', parkingLotRoute);
 
 // Get the configuration options
 // based on the config file parameters
