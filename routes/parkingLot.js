@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
 });
 
 // Get a parking lot by id (dev only)
-router.get('/:id', function(req, res) {
+router.get('/details/:id', function(req, res) {
 	var id = req.param('id');
 
 	mongoose.model('parkingLot').findOne({"_id" : id} , function(err, parkingLot) {
