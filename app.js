@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 // Import routes
 var index = require('./routes/index');
 var userRoute = require('./routes/user');
+var clientRoute = require('./routes/client');
 var vehicleRoute = require('./routes/vehicle');
 var parkingLotRoute = require('./routes/parkingLot');
 
@@ -14,6 +15,7 @@ var app = express();
 // Use routes
 app.use('/', index);
 app.use('/user', userRoute);
+app.use('/client', clientRoute);
 app.use('/vehicle', vehicleRoute);
 app.use('/parkingLot', parkingLotRoute);
 
