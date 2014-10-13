@@ -36,6 +36,19 @@ router.get('/clients', function(req, res) {
   })
 });
 
+// Get all parkingLots
+router.get('/parkingLots', function(req, res) {
+  mongoose.model('parkingLot').find(function(err, parkingLots) {
+    if(err) {
+      console.log('error getting parkingLots');
+      console.log(err);
+      res.send(err);
+    } else {
+      res.send(parkingLots);
+    }
+  })
+});
+
 // Get all vehicles
 router.get('/vehicles', function(req, res) {
   mongoose.model('vehicle').find(function(err, vehicles) {
@@ -45,6 +58,19 @@ router.get('/vehicles', function(req, res) {
   		res.send(err);
   	} else {
   		res.send(vehicles);
+  	}
+  })
+});
+
+// Get all parkingPasses
+router.get('/parkingPasses', function(req, res) {
+  mongoose.model('parkingPass').find(function(err, parkingPasses) {
+  	if(err) {
+  		console.log('error getting parkingPasses');
+  		console.log(err);
+  		res.send(err);
+  	} else {
+  		res.send(parkingPasses);
   	}
   })
 });

@@ -8,6 +8,7 @@ var userRoute = require('./routes/user');
 var clientRoute = require('./routes/client');
 var vehicleRoute = require('./routes/vehicle');
 var parkingLotRoute = require('./routes/parkingLot');
+var parkingPassRoute = require('./routes/parkingPass');
 
 // Start the app
 var app = express();
@@ -18,6 +19,7 @@ app.use('/user', userRoute);
 app.use('/client', clientRoute);
 app.use('/vehicle', vehicleRoute);
 app.use('/parkingLot', parkingLotRoute);
+app.use('/parkingPass', parkingPassRoute);
 
 // Get the configuration options
 // based on the config file parameters

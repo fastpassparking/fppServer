@@ -19,6 +19,14 @@ var parkingPassSchema = new Schema({
 		latitude: Number,
 		longitude: Number
 	},
+	startDateTime: {
+		type: Date,
+		required: true
+	},
+	endDateTime: {
+		type: Date,
+		required: true
+	},
 	parkingPayments: [parkingPayment]
 })
 

@@ -4,11 +4,18 @@ var Schema = mongoose.Schema;
 
 // ParkingPayment model definition
 var parkingPaymentSchema = new Schema({
-	id: Schema.ObjectId,
-	startDateTime: Date,
-	endDateTie: Date,
-	timeInitiated: Date,
-	paymentAmount: Number,
+	timeInitiated: {
+		type: Date,
+		required: true
+	},
+	amountOfTime: {
+		type: Number,
+		required: true
+	},
+	paymentAmount: {
+		type: Number,
+		required: true
+	},
 	lastFourOfCreditCard: String,
 	fromAccountCredit: Boolean
 })

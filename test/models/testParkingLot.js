@@ -1,6 +1,5 @@
 {
   "parkingLot": { 
-    "clientId": "Jason's Garage",
     "name":"Garage A",
     "geoLocation" : {
       "longitude":"2.1002314",

@@ -45,9 +45,6 @@ router.post('/', function(req, res) {
     }
 });
 
-
-
-
 // Get all lots for a particular client
 router.get('/', function(req, res) {
   var clientId = req.param('client_id');
