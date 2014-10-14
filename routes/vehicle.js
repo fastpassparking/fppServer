@@ -42,7 +42,7 @@ router.post('/', function(req, res) {
 });
 
 // Get all vehicles for a particular user
-router.get('/', function(req, res) {
+router.get('/byUser', function(req, res) {
   var userId = req.param('user_id');
 
     if (userId) {
@@ -70,6 +70,25 @@ router.get('/', function(req, res) {
   } else {
     res.status(404).json({error: 'user_id parameter is required'});
   }
+});
+
+// Get vehicle by id
+router.get('/:id', function(req, res) {
+  var id = req.param('id');
+  mongoose.model('vehicle').findOne({'_id': id }, function(err, vehicle) {
+    if(err) {
+      console.log('error getting vehicle');
+      console.log(err);
+      res.send(err);
+    } else {
+      if(vehicle) {
+        res.send(vehicle);
+      } else {
+        // Return a 404 error because the object was not found
+        res.status(404).json({error: 'no vehicle was found for id: ' + id});
+      }
+    }
+  })
 });
 
 // Update a vehicle
