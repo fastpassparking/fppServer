@@ -1,7 +1,7 @@
 {
   "parkingLot": { 
     "name":"Garage A",
-    "geoLocation" : {
+    "centerLocation" : {
       "longitude":"2.1002314",
       "latitude":"1.725941"
     },

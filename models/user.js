@@ -5,6 +5,14 @@ var Schema = mongoose.Schema;
 // User model definition
 var userSchema = new Schema({
 	id: Schema.ObjectId,
+	firstName: {
+		type: String,
+		required: true
+	},
+	lastName: {
+		type: String,
+		required: true
+	},
 	email: {
 		type: String,
 		unique: true,
@@ -15,7 +23,10 @@ var userSchema = new Schema({
 		required: true
 	},
 	phoneNumber: String,
-	availableCredit: Number
+	availableCredit: {
+		type: Number,
+		default: 0.00
+	}
 })
 
 // Set the model

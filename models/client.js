@@ -5,7 +5,10 @@ var Schema = mongoose.Schema;
 // Client model definition
 var clientSchema = new Schema({
 	id: Schema.ObjectId,
-	companyName: String,
+	companyName: {
+		type: String,
+		required: true
+	},
 	email: {
 		type: String,
 		unique: true,

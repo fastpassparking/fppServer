@@ -1,11 +1,9 @@
 {
   "vehicle": { 
-  	"license": {
-  		"plateNumber": "abc123",
-  		"state": "FL"
-  	},
+  	"licensePlateNumber": "abc123",
+  	"licenseState": "FL",
 	"make": "Toyota",
-	"model": "Celica",
-	"color": "Red"
+	"model": "Crapelica",
+	"color": "Brown"
   }
 }

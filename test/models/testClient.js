@@ -1,6 +1,7 @@
 {
   "client": { 
-	"email": "usser@mail.com",
+    "companyName": "Acme Co.",
+	"email": "uszser@mail.com",
 	"password": "sexcret",
     "phoneNumber":"823823"
   }

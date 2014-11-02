@@ -9,9 +9,14 @@ var vehicleSchema = new Schema({
 		type: String,
 		required: true
 	},
-	license: {
-		plateNumber: String,
-		state: String
+	
+	licensePlateNumber: {
+		type: String,
+		required: true
+	},
+	licenseState: {
+		type: String,
+		required: true
 	},
 	make: String,
 	model: String,

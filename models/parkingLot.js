@@ -10,7 +10,7 @@ var parkingLotSchema = new Schema({
 		required: true
 	},
 	name: String,
-	geoLocation: {
+	centerLocation: {
 		longitude: Number,
 		latitude: Number
 	},

@@ -9,9 +9,18 @@ var accountCreditSchema = new Schema({
 		type: String,
 		required: true
 	},
-	amount: Number,
-	dateTimeAdded: Date,
-	lastFourOfCreditCard: String
+	amount: {
+		type: Number
+		required: true
+	} 
+	dateTimeAdded: {
+		type: Date
+		required: true
+	},
+	lastFourOfCreditCard: {
+		type: String
+		required, true
+	}
 })
 
 // Set the model
