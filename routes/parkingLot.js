@@ -95,7 +95,7 @@ router.get('/details/:id', function(req, res) {
 });
 
 // Get Parking Lot within a bounding box
-router.get('/', function(req, res) {
+router.get('/byBoundingBox', function(req, res) {
     var validParameters = true,
         minLat = req.query.minLat,
         maxLat = req.query.maxLat,
