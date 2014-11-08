@@ -135,7 +135,7 @@ router.get('/byBoundingBox', function(req, res) {
             .find()
             .where('centerLocation.longitude').gte(minLong).lte(maxLong)
             .where('centerLocation.latitude').gte(minLat).lte(maxLat)
-            .select('name centerLocation');
+            .select('centerLocation', 'coordinates');
 
         // Retrieve parking lots within bounds
         query.exec(function(err, lots) {
