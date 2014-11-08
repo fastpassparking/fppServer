@@ -133,9 +133,9 @@ router.get('/byBoundingBox', function(req, res) {
     if (validParameters) {
         var query = mongoose.model('parkingLot')
             .find()
-            .where('geoLocation.longitude').gte(minLong).lte(maxLong)
-            .where('geoLocation.latitude').gte(minLat).lte(maxLat)
-            .select('name geoLocation');
+            .where('centerLocation.longitude').gte(minLong).lte(maxLong)
+            .where('centerLocation.latitude').gte(minLat).lte(maxLat)
+            .select('name centerLocation');
 
         // Retrieve parking lots within bounds
         query.exec(function(err, lots) {
