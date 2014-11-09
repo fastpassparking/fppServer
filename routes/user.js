@@ -99,6 +99,8 @@ router.put('/', function(req, res) {
 			if (rUser.lastName) user.lastName = rUser.lastName;
 			// Email
 			if (rUser.email) user.email = rUser.email;
+      // Password
+      if (rUser.password) user.password = rUser.password;
 			// Available Credit
 			if (rUser.availableCredit) user.availableCredit = rUser.availableCredit;
 			
