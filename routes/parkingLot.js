@@ -150,4 +150,24 @@ router.get('/byBoundingBox', function(req, res) {
 
 });
 
+// Update a parking lot main data
+router.put('/', function (req, res) {
+	var lot = req.body.parkingLot;
+	
+	if (!lot || !lot._id)
+		res.status(400).json({error: 'Missing id.'});
+	else
+		res.status(200);
+});
+
 module.exports = router;
+
+
+/**
+
+
+Payment information-> Add to user relationship, add table
+
+
+
+**/
