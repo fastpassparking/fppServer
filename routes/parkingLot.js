@@ -105,6 +105,11 @@ router.get('/byBoundingBox', function(req, res) {
     // Let's null-check the parameters
     if (minLat && maxLat && minLong && maxLong) {
 
+        minLat = parseFloat(minLat);
+        maxLat = parseFloat(maxLat);
+        minLong = parseFloat(minLong);
+        maxLong = parseFloat(maxLong);
+
         // Validate ranges
         if (minLat > maxLat || minLong > maxLong) {
             res.status(400).json({
