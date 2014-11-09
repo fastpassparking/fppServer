@@ -76,4 +76,44 @@ router.get('/:id', function(req, res) {
   })
 });
 
+// Update user information (Balance, account info, and vehicle data)
+router.put('/', function(req, res) {
+	var rUser = req.body.user;
+	
+	if (!rUser || !rUser._id) {
+		res.status(400).json({error: 'Missing id.'});
+		return;
+	}
+	
+	mongoose.model('user').findOne({'_id' : rUser._id}, function (err, user) {
+		if(err) {
+			console.log(err);
+			res.send(err);
+		} else if(user) {
+		
+			// Phone number
+			if (rUser.phoneNumber) user.phoneNumber = rUser.phoneNumber;
+			// First name
+			if (rUser.firstName) user.firstName = rUser.firstName;
+			// Last name
+			if (rUser.lastName) user.lastName = rUser.lastName;
+			// Email
+			if (rUser.email) user.email = rUser.email;
+			// Available Credit
+			if (rUser.availableCredit) user.availableCredit = rUser.availableCredit;
+			
+			// Update vehicle information?
+			// Should app really set the credit, or rather just give an amount to add/subtract?
+			
+			
+			user.save(); // Save changes
+			res.send(user); // Return updated user
+		} else {
+			res.status(404).json({error: 'User not found'});
+		}
+		
+	});
+	
+});
+
 module.exports = router;
