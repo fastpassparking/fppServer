@@ -20,7 +20,8 @@ var vehicleSchema = new Schema({
 	},
 	make: String,
 	model: String,
-	color: String
+	color: String,
+	year: String
 })
 
 // Set the model
