@@ -9,7 +9,6 @@ var vehicleSchema = new Schema({
 		type: String,
 		required: true
 	},
-	
 	licensePlateNumber: {
 		type: String,
 		required: true

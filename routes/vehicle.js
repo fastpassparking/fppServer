@@ -111,10 +111,12 @@ router.put('/', function(req, res) {
             res.send(err);
           } else if(vehicle) {
             // Only update certain fields
-            vehicle.license = updatedvehicle.license;
+            vehicle.licensePlateNumber = updatedvehicle.licensePlateNumber;
+            vehicle.licenseState = updatedvehicle.licenseState;
             vehicle.make = updatedvehicle.make;
             vehicle.model = updatedvehicle.model;
             vehicle.color = updatedvehicle.color;
+            vehicle.year = updatedvehicle.year;
             vehicle.save();
             res.send(vehicle);
           } else {

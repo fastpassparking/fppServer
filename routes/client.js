@@ -8,11 +8,10 @@ require('../models/client');
 router.use(bodyParser.json());
 
 
-// Creating a client (dev only)
+// Creating a client 
 router.post('/', function(req, res) {
 	var newClient = req.body.client;
 
-	// Need to validate the client here?
 	mongoose.model('client').create(newClient, function(err, clientCreated) {
 		if (err) {
 			console.log('Error creating client');
@@ -61,14 +60,13 @@ router.get('/login', function(req, res) {
   }
 });
 
-// Get client by id (dev only)
+// Get client by id 
 router.get('/:id', function(req, res) {
 	var id = req.param('id');
 
 	mongoose.model('client').findOne({"_id" : id} , function(err, client) {
 		if (err) {
 			console.log('Error finding client.');
-			//console.log(newClient); variable possibly out of scope? Please tell me why we need this here -Wolfe
 			console.log(err);
 			res.send(err);
 		} else {

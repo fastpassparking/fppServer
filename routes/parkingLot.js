@@ -76,7 +76,7 @@ router.get('/', function(req, res) {
   }
 });
 
-// Get a parking lot by id (dev only)
+// Get a parking lot by id
 router.get('/details/:id', function(req, res) {
     var id = req.param('id');
 
@@ -166,13 +166,3 @@ router.put('/', function (req, res) {
 });
 
 module.exports = router;
-
-
-/**
-
-
-Payment information-> Add to user relationship, add table
-
-
-
-**/

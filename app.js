@@ -39,7 +39,7 @@ mongoose.connect(dbPort, dbOptions, function(err, data) {
     }
 });
 
-// List on the server port
+// Listen on the server port
 app.listen(serverPort, function(err, data) {
     if(err) {
         console.log('could not connect to server: ' + serverPort);
