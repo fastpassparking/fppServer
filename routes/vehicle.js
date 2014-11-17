@@ -104,7 +104,7 @@ router.put('/', function(req, res) {
         res.send(err);
       } else if(user) {
         // Update the vehicle in the database
-        mongoose.model('vehicle').findOne({'_id': updatedvehicle.id}, function(err, vehicle) {
+        mongoose.model('vehicle').findOne({'_id': updatedvehicle._id}, function(err, vehicle) {
           if(err) {
             console.log('error creating vehicle:');
             console.log(err);
