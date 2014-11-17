@@ -10,6 +10,10 @@ var parkingLotSchema = new Schema({
 		required: true
 	},
 	name: String,
+	costPerHour: {
+		type: Number,
+		required: true
+	},
 	centerLocation: {
 		longitude: Number,
 		latitude: Number
