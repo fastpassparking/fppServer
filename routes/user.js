@@ -15,13 +15,14 @@ router.post('/', function(req, res) {
       console.log('error creating user:');
       console.log(userToAdd);
       console.log(err);
-      res.send(err);
+
+      // Return a 403 error because further access is forbidden 
+      res.status(403).json({error: 'user already exists with that email'});
     } else {
       if(user) {
         res.send(user);
       } else {
-        // Return a 403 error because further access is forbidden 
-        res.status(403).json({error: 'user already exists with that email'});
+        res.status(400).json({error: 'error creating user'});
       }
     }
   })
