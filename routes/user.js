@@ -17,7 +17,12 @@ router.post('/', function(req, res) {
       console.log(err);
       res.send(err);
     } else {
-      res.send(user);
+      if(user) {
+        res.send(user);
+      } else {
+        // Return a 403 error because further access is forbidden 
+        res.status(403).json({error: 'user already exists with that email'});
+      }
     }
   })
 });
