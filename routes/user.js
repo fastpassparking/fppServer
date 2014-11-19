@@ -110,10 +110,6 @@ router.put('/', function(req, res) {
 			// Available Credit
 			if (rUser.availableCredit) user.availableCredit = rUser.availableCredit;
 			
-			// Update vehicle information?
-			// Should app really set the credit, or rather just give an amount to add/subtract?
-			
-			
 			user.save(); // Save changes
 			res.send(user); // Return updated user
 		} else {

@@ -155,14 +155,35 @@ router.get('/byBoundingBox', function(req, res) {
 
 });
 
-// Update a parking lot main data
-router.put('/', function (req, res) {
-	var lot = req.body.parkingLot;
-	
-	if (!lot || !lot._id)
-		res.status(400).json({error: 'Missing id.'});
-	else
-		res.status(200);
+// Update a vehicle
+router.put('/', function(req, res) {
+  var lot = req.body.parkingLot;
+
+  if (lot) {
+    // Find the parkingLot to ensure it exists
+    mongoose.model('parkingLot').findOne({'_id': lot._id }, function(err, returnedLot) {
+      if(err) {
+        console.log(err);
+        res.send(err);
+      } else if(returnedLot) {
+        // Update the parkingLot in the database
+        if(lot.name) returnedLot.name = lot.name;
+        if(lot.address) returnedLot.address = lot.address;
+        if(lot.costPerHour) returnedLot.costPerHour = lot.costPerHour;
+        if(lot.centerLocation) returnedLot.centerLocation = lot.centerLocation;
+        if(lot.coordinates) returnedLot.coordinates = lot.coordinates;
+
+        returnedLot.save();
+        res.send(returnedLot);
+        
+      } else {
+        res.status(404).json({error: 'parkingLot not found'});
+      }
+
+  }) 
+  } else {
+    res.status(404).json({error: 'parkingLot body is required'});
+  }
 });
 
 module.exports = router;
