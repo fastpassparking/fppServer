@@ -14,6 +14,10 @@ var parkingPassSchema = new Schema({
 		type: String,
 		required: true
 	},
+	parkingLotName: {
+		type: String,
+		required: true
+	},
 	parkingType: String,
 	parkingLocation: {
 		latitude: Number,

@@ -9,7 +9,10 @@ var parkingLotSchema = new Schema({
 		type: String,
 		required: true
 	},
-	name: String,
+	name: {
+		type: String,
+		required: true
+	},
 	costPerHour: {
 		type: Number,
 		required: true
