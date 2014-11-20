@@ -53,9 +53,10 @@ router.post('/', function(req, res) {
                 console.log(err);
                 res.send(err);
               } else {
+				
                 res.send(parkingPass);
               }
-            })
+            });
           } else {
             res.status(404).json({error: 'parkingLot not found'});
           }
@@ -155,7 +156,7 @@ router.get('/byLicensePlate', function(req, res) {
 	
 	// Find vehicle by plate number
 	function getVehicleByPlate(plate, callback) {
-		mongoose.model('vehicle').findOne({"licensePlateNumber" : plate.toLowerCase()}, function (err, vehicle) {
+		mongoose.model('vehicle').findOne({"licensePlateNumber" : { $regex: new RegExp("^" + plate.toLowerCase(), "i") }}, function (err, vehicle) {
 			if (err) {
 				res.status(400).json(err);
 			} else {
