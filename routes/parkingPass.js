@@ -155,7 +155,7 @@ router.get('/byLicensePlate', function(req, res) {
 	
 	// Find vehicle by plate number
 	function getVehicleByPlate(plate, callback) {
-		mongoose.model('vehicle').findOne({"licensePlateNumber" : plate}, function (err, vehicle) {
+		mongoose.model('vehicle').findOne({"licensePlateNumber" : plate.toLowerCase()}, function (err, vehicle) {
 			if (err) {
 				res.status(400).json(err);
 			} else {
@@ -164,11 +164,11 @@ router.get('/byLicensePlate', function(req, res) {
 		});
 	}
 	
-	function getPassForLot(vehicle, lot_id) {		
+	function getPassForLot(vehicle, lot_id) {	
 		mongoose.model('parkingPass').findOne({
-			"vehicleId" : vehicle._id,
-			"parkingLotId" : lot_id
-		}, function (err, parkingPass) {
+			"vehicleId" : vehicle._id
+			,"parkingLotId" : lot_id
+		}, null, {sort: {endDateTime : -1}}, function (err, parkingPass) {
 			if (err) {
 				res.send({});
 			} else {
