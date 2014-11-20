@@ -2,7 +2,7 @@
   "client": { 
     "companyName": "Acme Co.",
 	"email": "uszser@mail.com",
-	"password": "sexcret",
+	"password": "thesecret",
     "phoneNumber":"823823"
   }
 }
