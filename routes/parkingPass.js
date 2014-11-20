@@ -199,7 +199,7 @@ router.put('/', function(req, res) {
 
           // Update parkingPass endDate
           if(parkingPayment.amountOfTime) {
-            parkingPass.endDateTime = parkingPass.endDateTime.getTime() 
+            parkingPass.endDateTime = (parkingPass.endDateTime.getTime() 
               + parkingPayment.amountOfTime * 60000);
           }
 
