@@ -76,6 +76,7 @@ router.post('/', function(req, res) {
 // Get parkingPasses for User
 router.get('/byUser', function(req, res) {
   var userId = req.param('user_id'); 
+  var current = req.param('current');
 
     if (userId) {
     // Find the user to ensure it exists
@@ -108,7 +109,17 @@ router.get('/byUser', function(req, res) {
 
               for(var i = 0; i < vehicles.length; i++) {
                 var vehicleId = vehicles[i]._id;
-                var query = mongoose.model('parkingPass').find({'vehicleId': vehicleId}).limit(5);
+
+                if(current && current == 'true') {
+                  var currentTime = new Date();
+                  var query = mongoose.model('parkingPass')
+                    .find({'vehicleId': vehicleId})
+                    .where('endDateTime').gte(currentTime)
+                    .limit(5);
+                } else {
+                  var query = mongoose.model('parkingPass').find({'vehicleId': vehicleId}).limit(5);
+                }
+                
                 query.exec(function(err, parkingPasses) {
                   if(err) {
                     console.log('error getting all parkingPasses for user');
