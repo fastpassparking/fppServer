@@ -1,0 +1,1 @@
+http://localhost:3000/ParkingPass/byLicensePlate?licensePlate=HUE789&lot_id=457

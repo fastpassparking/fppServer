@@ -149,6 +149,44 @@ router.get('/byUser', function(req, res) {
   }
 });
 
+// Attendant method - Get Parking Pass, via license plate # for a particular lot
+router.get('/byLicensePlate', function(req, res) {
+	
+	// Find vehicle by plate number
+	function getVehicleByPlate(plate, callback) {
+		mongoose.model('vehicle').findOne({"licensePlateNumber" : plate}, function (err, vehicle) {
+			if (err) {
+				res.status(400).json(err);
+			} else {
+				callback && callback(vehicle);
+			}
+		});
+	}
+	
+	function getPassForLot(vehicle, lot_id) {		
+		mongoose.model('parkingPass').findOne({
+			"vehicleId" : vehicle._id,
+			"parkingLotId" : lot_id
+		}, function (err, parkingPass) {
+			if (err) {
+				res.send({});
+			} else {
+				res.send(parkingPass);
+			}
+		});
+	}
+	
+	getVehicleByPlate(req.param('licensePlate'), function (vehicle) {
+		if (!vehicle) {
+			res.status(400).json({error: 'License plate not found.'});
+			return;
+		} else {
+			getPassForLot(vehicle, req.param('lot_id'));
+		}
+	});
+	
+});
+
 // Get parkingPasses for ParkingLot
 router.get('/byParkingLot', function(req, res) {
   var lotId = req.param('lot_id');
