@@ -197,9 +197,15 @@ router.put('/', function(req, res) {
           // Add park payment object to parking pass
           parkingPass.parkingPayments.push(parkingPayment);
 
+          // Update parkingPass endDate
+          if(parkingPayment.amountOfTime) {
+            parkingPass.endDateTime = parkingPass.endDateTime.getTime() 
+              + parkingPayment.amountOfTime * 60000);
+          }
+
           // Update parking pass in the database
-          vehicle.save();
-          res.send(vehicle);
+          parkingPass.save();
+          res.send(parkingPass);
       } else {
         res.status(404).json({error: 'parkingPass not found'});
       }
