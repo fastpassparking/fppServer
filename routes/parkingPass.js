@@ -51,9 +51,14 @@ router.post('/', function(req, res) {
                 console.log('error creating parkingPass:');
                 console.log(parkingPass);
                 console.log(err);
-                res.send(err);
+                res.status(400).json({error: 'error creating parkingPass'});
               } else {
-                res.send(parkingPass);
+                if(parkingPass) {
+                  res.send(parkingPass);
+                } else {
+                  res.status(404).json({error: 'error creating parkingPass'});
+                }
+                
               }
             })
           } else {
