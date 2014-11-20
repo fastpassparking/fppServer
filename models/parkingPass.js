@@ -18,7 +18,10 @@ var parkingPassSchema = new Schema({
 		type: String,
 		required: true
 	},
-	parkingType: String,
+	costPerHour: {
+		type: Number,
+		required: true
+	},
 	parkingLocation: {
 		latitude: Number,
 		longitude: Number

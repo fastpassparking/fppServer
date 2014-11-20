@@ -33,6 +33,7 @@ router.post('/', function(req, res) {
             parkingPassToAdd.vehicleId = vehicleId;
             parkingPassToAdd.parkingLotId = lotId;
             parkingPassToAdd.parkingLotName = parkingLot.name;
+            parkingPassToAdd.costPerHour = parkingLot.costPerHour;
             parkingPassToAdd.startDateTime = new Date();
             if(parkingPayment.amountOfTime) {
               parkingPassToAdd.endDateTime = new Date(parkingPassToAdd.startDateTime.getTime() 
