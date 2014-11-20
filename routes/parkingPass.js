@@ -108,7 +108,8 @@ router.get('/byUser', function(req, res) {
 
               for(var i = 0; i < vehicles.length; i++) {
                 var vehicleId = vehicles[i]._id;
-                mongoose.model('parkingPass').find({'vehicleId': vehicleId}, {limit: 5}, function(err, parkingPasses) {
+                var query = mongoose.model('parkingPass').find({'vehicleId': vehicleId}).limit(5);
+                query.exec(function(err, parkingPasses) {
                   if(err) {
                     console.log('error getting all parkingPasses for user');
                     console.log(err);
