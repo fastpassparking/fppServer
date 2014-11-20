@@ -115,9 +115,13 @@ router.get('/byUser', function(req, res) {
                   var query = mongoose.model('parkingPass')
                     .find({'vehicleId': vehicleId})
                     .where('endDateTime').gte(currentTime)
+                    .sort({'endDateTime': 'descending'})
                     .limit(5);
                 } else {
-                  var query = mongoose.model('parkingPass').find({'vehicleId': vehicleId}).limit(5);
+                  var query = mongoose.model('parkingPass')
+                    .find({'vehicleId': vehicleId})
+                    .sort({'endDateTime': 'descending'})
+                    .limit(5);
                 }
                 
                 query.exec(function(err, parkingPasses) {
