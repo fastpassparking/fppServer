@@ -53,17 +53,11 @@ router.post('/', function(req, res) {
                 console.log(err);
                 res.status(400).json({error: 'error creating parkingPass'});
               } else {
-<<<<<<< HEAD
                 if(parkingPass) {
                   res.send(parkingPass);
                 } else {
                   res.status(404).json({error: 'error creating parkingPass'});
                 }
-                
-=======
-				
-                res.send(parkingPass);
->>>>>>> FETCH_HEAD
               }
             });
           } else {
