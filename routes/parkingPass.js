@@ -33,6 +33,7 @@ router.post('/', function(req, res) {
             parkingPassToAdd.vehicleId = vehicleId;
             parkingPassToAdd.parkingLotId = lotId;
             parkingPassToAdd.parkingLotName = parkingLot.name;
+            parkingPassToAdd.costPerHour = parkingLot.costPerHour;
             parkingPassToAdd.startDateTime = new Date();
             if(parkingPayment.amountOfTime) {
               parkingPassToAdd.endDateTime = new Date(parkingPassToAdd.startDateTime.getTime() 
@@ -50,11 +51,15 @@ router.post('/', function(req, res) {
                 console.log('error creating parkingPass:');
                 console.log(parkingPass);
                 console.log(err);
-                res.send(err);
+                res.status(400).json({error: 'error creating parkingPass'});
               } else {
-                res.send(parkingPass);
+                if(parkingPass) {
+                  res.send(parkingPass);
+                } else {
+                  res.status(404).json({error: 'error creating parkingPass'});
+                }
               }
-            })
+            });
           } else {
             res.status(404).json({error: 'parkingLot not found'});
           }
@@ -115,7 +120,7 @@ router.get('/byUser', function(req, res) {
                   var query = mongoose.model('parkingPass')
                     .find({'vehicleId': vehicleId})
                     .where('endDateTime').gte(currentTime)
-                    .sort({'endDateTime': 'descending'})
+                    .sort({'endDateTime': 'ascending'})
                     .limit(5);
                 } else {
                   var query = mongoose.model('parkingPass')
@@ -163,11 +168,11 @@ router.get('/byLicensePlate', function(req, res) {
 		});
 	}
 	
-	function getPassForLot(vehicle, lot_id) {		
+	function getPassForLot(vehicle, lot_id) {	
 		mongoose.model('parkingPass').findOne({
-			"vehicleId" : vehicle._id,
-			"parkingLotId" : lot_id
-		}, function (err, parkingPass) {
+			"vehicleId" : vehicle._id
+			,"parkingLotId" : lot_id
+		}, null, {sort: {endDateTime : -1}}, function (err, parkingPass) {
 			if (err) {
 				res.send({});
 			} else {
