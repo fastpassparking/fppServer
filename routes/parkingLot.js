@@ -76,6 +76,29 @@ router.get('/', function(req, res) {
   }
 });
 
+//remove parking Lot by ID
+router.delete('/delete', function(req, res) {
+  var lotId = req.param('lot_id');
+
+    if (lotId) {
+    // Find the client to ensure it exists
+    mongoose.model('parkingLot').remove({'_id': lotId}, function(err, lot) {
+      if(err) {
+        console.log(err);
+        res.send(err);
+      } else if(lot) {
+        res.send('lot with id' + lotId + ' removed ' + lot);
+        
+      } else {
+        res.status(404).json({error: 'lotid not found'});
+      }
+
+  }) 
+  } else {
+    res.status(404).json({error: 'lot_id parameter is required'});
+  }
+});
+
 // Get a parking lot by id
 router.get('/details/:id', function(req, res) {
     var id = req.param('id');
