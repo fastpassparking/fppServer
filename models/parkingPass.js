@@ -1,3 +1,11 @@
+/*
+	Copyright (c) 2014 FastPassParking -
+			Jason Braswell, Kyle Mera, Pedra Poveda
+
+	All rights reserved.
+*/
+
+
 // Dependencies
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;

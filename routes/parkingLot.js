@@ -1,3 +1,11 @@
+/*
+    Copyright (c) 2014 FastPassParking -
+            Jason Braswell, Kyle Mera, Pedra Poveda
+
+    All rights reserved.
+*/
+
+
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
